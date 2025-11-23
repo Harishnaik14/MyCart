@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobiles</title>
+    {% load static %}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .offer-card {
+            background: linear-gradient(135deg, #0bb77f, #19a96b);
+            border-radius: 10px;
+            padding: 18px;
+            color: #fff;
+            height: 220px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .offer-brand {
+            font-weight: 700;
+            font-size: 20px
+        }
+
+        .offer-title {
+            font-size: 16px;
+            font-weight: 600
+        }
+
+        .offer-price {
+            font-size: 18px;
+            font-weight: 700
+        }
+
+        .offer-old {
+            text-decoration: line-through;
+            opacity: .8;
+            font-size: 13px
+        }
+
+        .product-img-small {
+            width: 140px;
+            height: auto;
+            object-fit: contain
+        }
+
+        .ribbon {
+            background: #ffffff;
+            padding: 12px 40px;
+            display: inline-block;
+            font-size: 24px;
+            font-weight: bold;
+            color: #0051b3;
+            position: relative;
+            border-radius: 3px;
+        }
+
+        .ribbon:before,
+        .ribbon:after {
+            content: "";
+            position: absolute;
+            height: 100%;
+            width: 60px;
+            background: #0051b3;
+            top: 0;
+            z-index: -1;
+        }
+
+        .ribbon:before {
+            left: -40px;
+            transform: skewX(-25deg);
+        }
+
+        .ribbon:after {
+            right: -40px;
+            transform: skewX(-25deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ribbon">
+        <span><h1>MOBILES</h1></span>
+    </div>
+
+
+    <div class="container mt-4">
+        <div class="row g-3">
+
+            <div class="col-md-4">
+                <a href="{% url 'product_detail' 1 %}?img={% static 'phones/iphone 16.jpg' %}">
+                    <div class="offer-card">
+                        <div>
+                            <div class="offer-brand">iPhone</div>
+                            <div>Exclusive Offer Just for You</div>
+                            <div class="offer-title">iPhone 16</div>
+                            <div class="offer-price">From ₹56,999 <span class="offer-old">₹69,999</span></div>
+                                <div class="mt-2">
+                                <a href="{% url 'add_to_cart' 1 %}?name={{ 'iPhone 16'|urlencode }}&price=56999&img={% static 'phones/iphone 16.jpg' %}" class="btn btn-sm btn-primary me-1">Add to Cart</a>
+                                    <a href="{% url 'buy_now' 1 %}?img={% static 'phones/iphone 16.jpg' %}&name={{ 'iPhone 16'|urlencode }}&price=56999" class="btn btn-sm btn-success">Buy Now</a>
+                            </div>
+                        </div>
+                        <div class="img-wrap text-end">
+                            <img src="{% static 'phones/iphone 16.jpg' %}" class="product-img-small" alt="">
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-4">
+                <a href="{% url 'product_detail' 2 %}?img={% static 'phones/s24 snap.jpg' %}">
+                    <div class="offer-card">
+                        <div>
+                            <div class="offer-brand">Samsung</div>
+                            <div>India's Most Wanted Deal</div>
+                            <div class="offer-title">Galaxy S24</div>
+                            <div class="offer-price">From ₹40,999 <span class="offer-old">₹74,999</span></div>
+                                <div class="mt-2">
+                                <a href="{% url 'add_to_cart' 2 %}?name={{ 'Galaxy S24'|urlencode }}&price=40999&img={% static 'phones/s24 snap.jpg' %}" class="btn btn-sm btn-primary me-1">Add to Cart</a>
+                                    <a href="{% url 'buy_now' 2 %}?img={% static 'phones/s24 snap.jpg' %}&name={{ 'Galaxy S24'|urlencode }}&price=40999" class="btn btn-sm btn-success">Buy Now</a>
+                            </div>
+                        </div>
+                        <div class="img-wrap text-end">
+                            <img src="{% static 'phones/s24 snap.jpg' %}" class="product-img-small" alt="">
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-4">
+                <a href="{% url 'product_detail' 3 %}?img={% static 'phones/pixel 10.jpg' %}">
+                    <div class="offer-card">
+                        <div>
+                            <div class="offer-brand">Pixel</div>
+                            <div>Be Spectacular with Triple Cam</div>
+                            <div class="offer-title">Google Pixel 10</div>
+                            <div class="offer-price">From ₹67,999 <span class="offer-old">₹79,999</span></div>
+                                <div class="mt-2">
+                                <a href="{% url 'add_to_cart' 3 %}?name={{ 'Google Pixel 10'|urlencode }}&price=67999&img={% static 'phones/pixel 10.jpg' %}" class="btn btn-sm btn-primary me-1">Add to Cart</a>
+                                    <a href="{% url 'buy_now' 3 %}?img={% static 'phones/pixel 10.jpg' %}&name={{ 'Google Pixel 10'|urlencode }}&price=67999" class="btn btn-sm btn-success">Buy Now</a>
+                            </div>
+                        </div>
+                        <div class="img-wrap text-end">
+                            <img src="{% static 'phones/pixel 10.jpg' %}" class="product-img-small" alt="">
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="row g-3 mt-3">
+
+            <div class="col-md-4">
+                <a href="{% url 'product_detail' 4 %}?img={% static 'phones/s24 snap.jpg' %}">
+                    <div class="offer-card">
+                        <div>
+                            <div class="offer-brand">SAMSUNG</div>
+                            <div>India's Most Wanted Deal</div>
+                            <div class="offer-title">Galaxy S24 Snapdragon</div>
+                            <div class="offer-price">From ₹40,999 <span class="offer-old">₹74,999</span></div>
+                                <div class="mt-2">
+                                <a href="{% url 'add_to_cart' 4 %}?name={{ 'Galaxy S24 Snapdragon'|urlencode }}&price=40999&img={% static 'phones/s24 snap.jpg' %}" class="btn btn-sm btn-primary me-1">Add to Cart</a>
+                                    <a href="{% url 'buy_now' 4 %}?img={% static 'phones/s24 snap.jpg' %}&name={{ 'Galaxy S24 Snapdragon'|urlencode }}&price=40999" class="btn btn-sm btn-success">Buy Now</a>
+                            </div>
+                        </div>
+                        <div class="img-wrap text-end">
+                            <img src="{% static 'phones/s24 snap.jpg' %}" class="product-img-small" alt="">
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-4">
+                <a href="{% url 'product_detail' 5 %}?img={% static 'phones/T4.jpg' %}">
+                    <div class="offer-card">
+                        <div>
+                            <div class="offer-brand">VIVO</div>
+                            <div>flagship level Camera</div>
+                            <div class="offer-title">Vivo T4 Ultra 5G</div>
+                            <div class="offer-price">From ₹34,999 <span class="offer-old">₹40,999</span></div>
+                                <div class="mt-2">
+                                <a href="{% url 'add_to_cart' 5 %}?name={{ 'Vivo T4 Ultra 5G'|urlencode }}&price=34999&img={% static 'phones/T4.jpg' %}" class="btn btn-sm btn-primary me-1">Add to Cart</a>
+                                    <a href="{% url 'buy_now' 5 %}?img={% static 'phones/T4.jpg' %}&name={{ 'Vivo T4 Ultra 5G'|urlencode }}&price=34999" class="btn btn-sm btn-success">Buy Now</a>
+                            </div>
+                        </div>
+                        <div class="img-wrap text-end">
+                            <img src="{% static 'phones/T4.jpg' %}" class="product-img-small" alt="">
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-4">
+                <a href="{% url 'product_detail' 6 %}?img={% static 'phones/14.jpg' %}">
+                    <div class="offer-card">
+                        <div>
+                            <div class="offer-brand">iphone</div>
+                            <div>Grab Gone Deal</div>
+                            <div class="offer-title">iPhone 14</div>
+                            <div class="offer-price">From ₹44,499 <span class="offer-old">₹64,999</span></div>
+                                <div class="mt-2">
+                                <a href="{% url 'add_to_cart' 6 %}?name={{ 'iPhone 14'|urlencode }}&price=44499&img={% static 'phones/14.jpg' %}" class="btn btn-sm btn-primary me-1">Add to Cart</a>
+                                    <a href="{% url 'buy_now' 6 %}?img={% static 'phones/14.jpg' %}&name={{ 'iPhone 14'|urlencode }}&price=44499" class="btn btn-sm btn-success">Buy Now</a>
+                            </div>
+                        </div>
+                        <div class="img-wrap text-end">
+                            <img src="{% static 'phones/14.jpg' %}" class="product-img-small" alt="">
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="row g-3 mt-3">
+
+            <div class="col-md-4">
+                <a href="{% url 'product_detail' 7 %}?img={% static 'phones/v60.jpg' %}">
+                    <div class="offer-card">
+                        <div>
+                            <div class="offer-brand">Vivo</div>
+                            <div>Zeiss professional imaging</div>
+                            <div class="offer-title">Vivo v60 5G</div>
+                            <div class="offer-price">From ₹36,999 <span class="offer-old">₹43,999</span></div>
+                                <div class="mt-2">
+                                <a href="{% url 'add_to_cart' 7 %}?name={{ 'Vivo v60 5G'|urlencode }}&price=36999&img={% static 'phones/v60.jpg' %}" class="btn btn-sm btn-primary me-1">Add to Cart</a>
+                                    <a href="{% url 'buy_now' 7 %}?img={% static 'phones/v60.jpg' %}&name={{ 'Vivo v60 5G'|urlencode }}&price=36999" class="btn btn-sm btn-success">Buy Now</a>
+                            </div>
+                        </div>
+                        <div class="img-wrap text-end">
+                            <img src="{% static 'phones/v60.jpg' %}" class="product-img-small" alt="">
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-4">
+                <a href="{% url 'product_detail' 8 %}?img={% static 'phones/reno14.jpg' %}">
+                    <div class="offer-card">
+                        <div>
+                            <div class="offer-brand">Oppo</div>
+                            <div>AI Portrait camera</div>
+                            <div class="offer-title">Oppo Reno 14 5G</div>
+                            <div class="offer-price">From ₹34,200 <span class="offer-old">₹42,999</span></div>
+                                <div class="mt-2">
+                                <a href="{% url 'add_to_cart' 8 %}?name={{ 'Oppo Reno 14 5G'|urlencode }}&price=34200&img={% static 'phones/reno14.jpg' %}" class="btn btn-sm btn-primary me-1">Add to Cart</a>
+                                    <a href="{% url 'buy_now' 8 %}?img={% static 'phones/reno14.jpg' %}&name={{ 'Oppo Reno 14 5G'|urlencode }}&price=34200" class="btn btn-sm btn-success">Buy Now</a>
+                            </div>
+                        </div>
+                        <div class="img-wrap text-end">
+                            <img src="{% static 'phones/reno14.jpg' %}" class="product-img-small" alt="">
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-4">
+                <a href="{% url 'product_detail' 9 %}?img={% static 'phones/24 fe.jpg' %}">
+                    <div class="offer-card" style="border-top:2px solid #0bb77f;">
+                        <div>
+                            <div class="offer-brand">Samsung</div>
+                            <div>Limited time offer</div>
+                            <div class="offer-title">Samsung Galaxy S24 FE</div>
+                            <div class="offer-price">From ₹31,999 <span class="offer-old">₹59,999</span></div>
+                                <div class="mt-2">
+                                <a href="{% url 'add_to_cart' 9 %}?name={{ 'Samsung Galaxy S24 FE'|urlencode }}&price=31999&img={% static 'phones/24 fe.jpg' %}" class="btn btn-sm btn-primary me-1">Add to Cart</a>
+                                    <a href="{% url 'buy_now' 9 %}?img={% static 'phones/24 fe.jpg' %}&name={{ 'Samsung Galaxy S24 FE'|urlencode }}&price=31999" class="btn btn-sm btn-success">Buy Now</a>
+                            </div>
+                        </div>
+                        <div class="img-wrap text-end">
+                            <img src="{% static 'phones/24 fe.jpg' %}" class="product-img-small" alt="">
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

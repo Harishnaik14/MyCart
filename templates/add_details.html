@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address Details</title>
+    {% load static %}
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            background: #f5f7fa;
+            font-family: "Segoe UI", sans-serif;
+        }
+
+        .form-card {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid #ced4da;
+            padding: 10px;
+            margin-top: 8px;
+        }
+
+        textarea {
+            height: 80px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container py-4">
+        <h2>Enter Delivery Details</h2>
+
+        {% if product or display_name %}
+        <div class="card mb-3 p-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>Buying:</strong> {{ display_name|default:product.name }}
+                </div>
+                <div>
+                    <strong>Amount:</strong> ₹{{ display_price|default:product.price }}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="form-card">
+
+            <form method="post" action="{% url 'place_order' %}" id="addressForm">
+                {% csrf_token %}
+                {% if display_name %}<input type="hidden" name="display_name" value="{{ display_name }}">{% endif %}
+                {% if display_price %}<input type="hidden" name="display_price" value="{{ display_price }}">{% endif %}
+
+                <label>Pincode</label>
+                <input type="text" id="pincode" name="pincode" placeholder="Enter Pincode">
+
+                <label>State</label>
+                <input type="text" id="state" name="state" placeholder="State" readonly>
+
+                <label>District</label>
+                <input type="text" id="district" name="district" placeholder="District" readonly>
+
+                <label>Taluk</label>
+                <input type="text" id="taluk" name="taluk" placeholder="Taluk" readonly>
+
+                <label>Your Name</label>
+                <input type="text" name="name" placeholder="Enter your name">
+
+                <label>Address</label>
+                <textarea name="address" placeholder="Enter your address"></textarea>
+
+                <button type="submit" id="placeBtn" disabled class="btn btn-primary mt-3">
+                    Place Order
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("pincode").addEventListener("keyup", function () {
+            let pincode = this.value;
+
+            if (pincode.length === 6) {
+                fetch(`https://api.postalpincode.in/pincode/${pincode}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data[0].Status === "Success") {
+                            let info = data[0].PostOffice[0];
+                            document.getElementById("state").value = info.State;
+                            document.getElementById("district").value = info.District;
+                            document.getElementById("taluk").value = info.Block;
+                            document.getElementById('placeBtn').disabled = false;
+                        } else {
+                            alert("Invalid Pincode");
+                        }
+                    })
+                    .catch(() => alert("Error fetching data"));
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

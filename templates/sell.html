@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyCart Seller Hub</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        .navbar-brand {
+            font-size: 28px;
+            font-weight: 700;
+            color: #047bd5 !important;
+        }
+
+        .hero {
+            background: url("https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1950&q=80") center/cover no-repeat;
+            min-height: 380px;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-overlay {
+            background: rgba(255, 255, 255, 0.7);
+            width: 100%;
+            height: 100%;
+            padding: 50px 0;
+        }
+
+        .feature-box {
+            border-radius: 20px;
+            background: #fff;
+        }
+
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .feature-item {
+            padding: 0 20px;
+        }
+
+        .divider {
+            width: 1px;
+            background: #e5e5e5;
+            height: 50px;
+        }
+
+
+        .start-btn {
+            background-color: #ffcc00;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .sell-title {
+            font-size: 3rem;
+            font-weight: 600;
+        }
+
+        .testimonial-box {
+            background: #f2f9ff;
+            border-radius: 40px;
+            max-width: 1100px;
+            position: relative;
+        }
+
+        /* Round Yellow Image Circle */
+        .testimonial-img-wrapper {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: #ffe600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .testimonial-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+        }
+
+        /* Arrow Buttons */
+        .testimonial-arrow {
+            width: 55px;
+            height: 55px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .arrow-icon {
+            font-size: 24px;
+            color: #555;
+        }
+
+        /* Dots */
+        .testimonial-indicators button {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #bbb;
+            border: none;
+        }
+
+        .testimonial-indicators .active {
+            background: #007bff !important;
+        }
+
+        body {
+            background: #f7faff;
+        }
+
+        .side-menu {
+            width: 280px;
+        }
+
+        .side-menu a {
+            padding: 12px 18px;
+            display: block;
+            color: #333;
+            font-size: 17px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            text-decoration: none;
+        }
+
+        .side-menu a.active {
+            border: 2px solid #1976f6;
+            color: #1976f6;
+            background: #eaf2ff;
+            font-weight: 600;
+        }
+
+        .sidebar-menu .list-group-item {
+            border: none;
+            padding: 15px 20px;
+            font-size: 16px;
+        }
+
+        .sidebar-menu .active-menu {
+            border: 2px solid #1E6FFB;
+            background: #EAF2FF;
+            color: #1E6FFB;
+            border-radius: 8px;
+        }
+
+        .content-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
+        }
+
+        .section-header {
+            font-size: 32px;
+            font-weight: 700;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .footer p {
+            margin: 6px 0;
+            cursor: pointer;
+        }
+
+        .footer p:hover {
+            text-decoration: underline;
+        }
+
+        .text-primary-shadow {
+            text-shadow: 0px 0px 8px rgba(13, 110, 253, 0.8);
+            /* same as Bootstrap primary blue */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm py-3">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="{% url 'home' %}">MyCart</a>
+
+            <span class="ms-2 fw-bold">MyCart Seller Hub</span>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item px-3">
+                        <a class="nav-link fw-semibold" href="#">Sell Online</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link fw-semibold" href="#">Fees & Commission</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link fw-semibold" href="#">Grow</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link fw-semibold" href="#">Learn</a>
+                    </li>
+                    <li class="nav-item px-3">
+                        <a class="nav-link fw-semibold" href="#">Shopsy</a>
+                    </li>
+                </ul>
+
+                <div class="d-flex">
+                    <a class="btn start-btn px-4 py-2" href="#">Start Selling</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <div class="hero">
+        <div class="hero-overlay d-flex align-items-center">
+            <div class="container">
+                <h1 class="sell-title">Sell Online with MyCart</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- FEATURES SECTION -->
+    <div class="container my-5">
+        <div class="feature-box d-flex justify-content-between align-items-center p-4 shadow-sm rounded-4 bg-white">
+
+            <!-- Item 1 -->
+            <div class="text-center flex-fill feature-item">
+                <img src="icon1.png" class="feature-icon mb-2" alt="">
+                <p class="fw-semibold mb-0">45 crore+ Flipkart<br>customers</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Item 2 -->
+            <div class="text-center flex-fill feature-item">
+                <img src="icon2.png" class="feature-icon mb-2" alt="">
+                <p class="fw-semibold mb-0">7* days secure & regular<br>payments</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Item 3 -->
+            <div class="text-center flex-fill feature-item">
+                <img src="icon3.png" class="feature-icon mb-2" alt="">
+                <p class="fw-semibold mb-0">Low cost of doing<br>business</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Item 4 -->
+            <div class="text-center flex-fill feature-item">
+                <img src="icon4.png" class="feature-icon mb-2" alt="">
+                <p class="fw-semibold mb-0">One click Seller Support</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Item 5 -->
+            <div class="text-center flex-fill feature-item">
+                <img src="icon5.png" class="feature-icon mb-2" alt="">
+                <p class="fw-semibold mb-0">Access to The Big Billion<br>Days & more</p>
+            </div>
+
+        </div>
+    </div>
+    <!-- SELLER SUCCESS STORIES (CAROUSEL) -->
+    <div class="container my-5">
+
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+
+            <div class="carousel-inner">
+
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="testimonial-box mx-auto p-4 p-md-5 d-flex align-items-center">
+
+                        <!-- Image -->
+                        <div class="testimonial-img-wrapper">
+                            <img src="your-image-1.jpg" class="testimonial-img" alt="">
+                        </div>
+
+                        <!-- Text -->
+                        <div class="ms-4">
+                            <h4 class="fw-bold mb-2">Vinay Garg, Activa & Digi Smart</h4>
+                            <p class="text-muted mb-0">
+                                When moving from offline to online business, our aim was to sell 300 orders per month.
+                                Today, we sell more than 700 orders per day and this has been possible because of the
+                                growth features on the MyCart seller dashboard, MyCart Ads and regular payments.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <div class="testimonial-box mx-auto p-4 p-md-5 d-flex align-items-center">
+                        <div class="testimonial-img-wrapper">
+                            <img src="your-image-2.jpg" class="testimonial-img" alt="">
+                        </div>
+
+                        <div class="ms-4">
+                            <h4 class="fw-bold mb-2">Rohit Enterprises</h4>
+                            <p class="text-muted mb-0">
+                                MyCart helped us scale with fast logistics, transparent settlements and reliable
+                                support.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- slide 3 -->
+                <div class="carousel-item">
+                    <div class="testimonial-box mx-auto p-4 p-md-5 d-flex align-items-center">
+                        <div class="testimonial-img-wrapper">
+                            <img src="your-image-2.jpg" class="testimonial-img" alt="">
+                        </div>
+
+                        <div class="ms-4">
+                            <h4 class="fw-bold mb-2">Rohit Enterprises</h4>
+                            <p class="text-muted mb-0">
+                                MyCart helped us scale with fast logistics, transparent settlements and reliable
+                                support.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Arrows -->
+            <button class="carousel-control-prev testimonial-arrow" type="button" data-bs-target="#testimonialCarousel"
+                data-bs-slide="prev">
+                <span class="arrow-icon">❮</span>
+            </button>
+
+            <button class="carousel-control-next testimonial-arrow" type="button" data-bs-target="#testimonialCarousel"
+                data-bs-slide="next">
+                <span class="arrow-icon">❯</span>
+            </button>
+
+            <!-- Pagination Dots -->
+            <div class="carousel-indicators testimonial-indicators">
+                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0"
+                    class="active"></button>
+                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1"></button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="container-fluid mt-5">
+        <div class="row">
+
+            <!-- Sidebar -->
+            <div class="col-md-3">
+                <div class="list-group sidebar-menu">
+
+                    <a href="#create" class="list-group-item list-group-item-action active-menu">Create Account</a>
+                    <a href="#list" class="list-group-item list-group-item-action">List Products</a>
+                    <a href="#storage" class="list-group-item list-group-item-action">Storage & Shipping</a>
+                    <a href="#payments" class="list-group-item list-group-item-action">Receive Payments</a>
+                    <a href="#grow" class="list-group-item list-group-item-action">Grow Faster</a>
+                    <a href="#sellerapp" class="list-group-item list-group-item-action">Seller App</a>
+                    <a href="#support" class="list-group-item list-group-item-action">Help & Support</a>
+
+                </div>
+            </div>
+
+            <!-- Right Content -->
+            <div class="col-md-8">
+
+                <!-- 1. Create Account -->
+                <div id="create" class="content-box">
+                    <h2 class="section-header">Create Account</h2>
+                    <p>
+                        Creating your MyCart seller account is a quick and hassle-free process that takes less than 10
+                        minutes. You only need basic details like your name, phone number, email ID, and GST information
+                        to get started. Once registered, you gain access to the MyCart Seller Dashboard where you can
+                        manage your store easily. MyCart ensures a smooth onboarding experience so even first-time
+                        sellers can join without confusion. The platform guides you step-by-step in setting up your
+                        profile, verifying your documents, and activating your seller account. After verification, you
+                        can instantly start listing products and selling to customers. MyCart also provides support
+                        during the entire setup process to help you begin your journey confidently.
+
+                    <ul>
+                        <li>Quick 10-minute registration process</li>
+
+                        <li>Simple KYC and GST document upload</li>
+
+                        <li>Easy dashboard to manage your store</li>
+
+                        <li>Guided onboarding steps</li>
+
+                        <li>Instant access after verification</li>
+
+                    </ul>
+                    </p>
+                </div>
+
+                <!-- 2. List Products -->
+                <div id="list" class="content-box">
+                    <h2 class="section-header">List Products</h2>
+                    <p>
+                        Listing products on MyCart is simple, even for new sellers. The platform provides user-friendly
+                        tools for uploading product photos, descriptions, prices, and variations. You can list items
+                        individually or upload them in bulk using templates. MyCart guides you on how to create
+                        high-quality listings that attract buyers. Once your products are added, they become visible to
+                        millions of customers searching across categories. You can also update stock, edit details, and
+                        track performance anytime. Clear listing guidelines ensure that your catalog looks professional
+                        and competitive in the marketplace
+                    <ul>
+                        <li>Easy product upload tools</li>
+
+                        <li>Bulk listing option</li>
+
+                        <li>High visibility to buyers</li>
+
+                        <li>Editable prices and stock</li>
+
+                        <li>Clear guidelines for better listings</li>
+                    </ul>
+                    </p>
+                </div>
+
+                <!-- 3. Storage & Shipping -->
+                <div id="storage" class="content-box">
+                    <h2 class="section-header">Storage & Shipping</h2>
+                    <p>
+                        MyCart offers reliable storage and shipping solutions that make order delivery effortless.
+                        Sellers can store products in their own warehouse or choose MyCart Fulfillment Centers for
+                        faster dispatch. MyCart’s delivery partners handle packaging, pickup, and doorstep delivery to
+                        customers across India. Real-time tracking allows both sellers and buyers to monitor shipments
+                        easily. The end-to-end logistics support ensures that orders are delivered safely and on time.
+                        This reduces the workload on sellers and improves the overall customer experience. With reliable
+                        storage and quick shipping, your products reach customers faster, boosting ratings and repeat
+                        sales.
+                    <ul>
+                        <li> Store products yourself or use MyCart warehouses</li>
+
+                        <li>Fast shipping across India</li>
+
+                        <li> Real-time order tracking</li>
+
+                        <li> Professional packaging & delivery</li>
+
+                        <li>Better seller ratings through quick dispatch</li>
+                    </ul>
+                    </p>
+                </div>
+
+                <!-- 4. Receive Payments -->
+                <div id="payments" class="content-box">
+                    <h2 class="section-header">Receive Payments</h2>
+                    <p>
+                        MyCart ensures that sellers receive payments safely, quickly, and without complications. Once an
+                        order is delivered, the payment is securely processed and added to your seller wallet. Every 7
+                        days, the amount is transferred directly to your registered bank account. The payment dashboard
+                        allows you to track your earnings, view settlements, check deductions, and download reports.
+                        This transparency helps you manage your business finances effectively. MyCart also protects
+                        sellers from fraudulent transactions, ensuring that you are paid for every valid order.
+                    <ul>
+                        <li>Secure payments every 7 days</li>
+
+                        <li>Direct transfer to bank account</li>
+
+                        <li>Transparent settlement reports</li>
+
+                        <li>Fraud protection for sellers</li>
+
+                        <li>Easy-to-track earnings</li>
+                    </ul>
+                    </p>
+                </div>
+
+                <!-- 5. Grow Faster -->
+                <div id="grow" class="content-box">
+                    <h2 class="section-header">Grow Faster</h2>
+                    <p>
+                        MyCart provides powerful tools to help sellers grow their business faster. You can promote your
+                        products using MyCart Ads to reach more buyers and increase sales. The analytics dashboard helps
+                        you understand customer behavior, best-selling items, and performance trends. Sellers also get
+                        access to premium tools like brand boosting, coupon creation, and performance insights. These
+                        features help you improve visibility and stay ahead of competitors. With better data and smart
+                        tools, you can scale your store easily on the MyCart platform.
+
+                    <ul>
+                        <li>MyCart sponsored ads</li>
+
+                        <li>Advanced analytics dashboard</li>
+
+                        <li>Premium sales growth tools</li>
+
+                        <li>Insights to improve performance</li>
+
+                        <li>Increased visibility across the platform</li>
+                    </ul>
+                    </p>
+                </div>
+
+                <!-- 6. Seller App -->
+                <div id="sellerapp" class="content-box">
+                    <h2 class="section-header">Seller App</h2>
+                    <p>
+                        The MyCart Seller App lets you manage your entire business from your mobile. You can add new
+                        products, change prices, update stock, and track orders instantly. The app also notifies you of
+                        new orders, returns, messages, and payments in real time. With an easy-to-use interface, you can
+                        run your store even when you’re away from your computer. The app supports quick responses to
+                        customer questions, which helps improve ratings. This makes it a powerful tool for sellers who
+                        want flexibility and control.
+
+                    <ul>
+                        <li>Full store control on mobile</li>
+
+                        <li>Real-time order alerts</li>
+
+                        <li>Easy product editing</li>
+
+                        <li>Instant customer chat</li>
+
+                        <li>Works anywhere, anytime</li>
+                    </ul>
+                    </p>
+                </div>
+
+                <!-- 7. Help & Support -->
+                <div id="support" class="content-box">
+                    <h2 class="section-header">Help & Support</h2>
+                    <p>
+                        MyCart ensures that sellers always have access to reliable support whenever needed. The platform
+                        provides 24×7 seller assistance through chat, email, and call support. Whether you need help
+                        with product listings, payments, shipping, or returns, the support team is ready to guide you.
+                        MyCart also offers a detailed help center with tutorials and FAQs for quick solutions. Dedicated
+                        seller programs and webinars help you understand best practices and grow faster. With strong
+                        support, every seller feels confident running their business on MyCart.
+
+                    <ul>
+                        <li>24×7 seller support</li>
+
+                        <li>Chat, email & phone help</li>
+
+                        <li>Tutorials, FAQs & guides</li>
+
+                        <li>Assistance for listings, payments, shipping</li>
+
+                        <li>Training sessions and seller webinars</li>
+                    </ul>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <footer class="footer bg-dark text-light pt-5 pb-4 mt-5">
+        <div class="container">
+
+            <!-- Popular Categories -->
+            <h3 class="text-center mb-4 fw-bold">Popular categories to sell across India</h3>
+
+            <div class="row text-center mb-4 g-4">
+                <div class="col-6 col-md-3">
+                    <p>Sell Mobile Online</p>
+                    <p>Sell Clothes Online</p>
+                    <p>Sell Sarees Online</p>
+                    <p>Sell Electronics Online</p>
+                    <p>Sell Women Clothes Online</p>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <p>Sell Shoes Online</p>
+                    <p>Sell Jewellery Online</p>
+                    <p>Sell Tshirts Online</p>
+                    <p>Sell Furniture Online</p>
+                    <p>Sell Makeup Online</p>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <p>Sell Paintings Online</p>
+                    <p>Sell Watch Online</p>
+                    <p>Sell Books Online</p>
+                    <p>Sell Home Products Online</p>
+                    <p>Sell Kurtis Online</p>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <p>Sell Beauty Products Online</p>
+                    <p>Sell Toys Online</p>
+                    <p>Sell Appliances Online</p>
+                    <p>Sell Shirts Online</p>
+                    <p>Sell Indian Clothes Online</p>
+                </div>
+            </div>
+
+            <hr class="border-secondary">
+
+            <div class="row mt-4 g-4">
+
+                <div class="col-md-3">
+                    <h6 class="fw-bold">Sell Online</h6>
+                    <p>Create Account</p>
+                    <p>List Products</p>
+                    <p>Storage & Shipping</p>
+                    <p>Fees & Commission</p>
+                    <p>Help & Support</p>
+                </div>
+
+                <div class="col-md-3">
+                    <h6 class="fw-bold">Grow Your Business</h6>
+                    <p>Insights & Tools</p>
+                    <p>MyCart Ads</p>
+                    <p>MyCart Value Services</p>
+                    <p>Shopping Festivals</p>
+                </div>
+
+                <div class="col-md-3">
+                    <h6 class="fw-bold">Learn More</h6>
+                    <p>FAQs</p>
+                    <p>Seller Success Stories</p>
+                    <p>Seller Blogs</p>
+                </div>
+
+                <div class="col-md-3">
+                    <h6 class="fw-bold">Download Mobile App</h6>
+                    <img src="google-play.png" width="150" class="mb-2">
+                    <img src="app-store.png" width="150">
+                    <h6 class="mt-3 fw-bold">Stay Connected</h6>
+
+                    <div class="d-flex gap-3 fs-4">
+                        <i class="bi bi-facebook"></i>
+                        <i class="bi bi-instagram"></i>
+                        <i class="bi bi-youtube"></i>
+                        <i class="bi bi-linkedin"></i>
+                        <i class="bi bi-twitter"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back to top -->
+            <div class="text-end mt-4">
+                <button id="backToTop"
+                    class="btn btn-light rounded-pill px-4 py-2 shadow-sm class text-primary text-primary-shadow">
+                    ↑ Go to Top
+                </button>
+            </div>
+
+            <div class="text-center mt-4 pt-3 border-top border-secondary">
+                <img src="mycart-logo.png" width="120" class="mb-2">
+                <p class="mb-0">© 2025 MyCart. All Rights Reserved</p>
+            </div>
+
+        </div>
+    </footer>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const menuItems = document.querySelectorAll(".sidebar-menu .list-group-item");
+
+        menuItems.forEach(item => {
+            item.addEventListener("click", function () {
+                menuItems.forEach(i => i.classList.remove("active-menu"));
+                this.classList.add("active-menu");
+            });
+        });
+
+        document.getElementById("backToTop").addEventListener("click", function () {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    </script>
+
+</body>
+
+</html>

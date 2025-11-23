@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ product.name }} — Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    {% load static %}
+    <style>
+        .product-main { padding: 30px 0; }
+        .product-img { max-width: 100%; height: auto; object-fit: contain; }
+    </style>
+</head>
+
+<body>
+    <div class="container product-main">
+        <div class="row">
+            <div class="col-md-6">
+                {% comment %}If an image URL is provided via ?img= in the link, use it so static cards can control the preview.{% endcomment %}
+                {% if request.GET.img %}
+                    <img src="{{ request.GET.img }}" class="product-img img-fluid rounded" alt="{{ product.name }}">
+                {% elif product.image %}
+                    <img src="{{ product.image.url }}" class="product-img img-fluid rounded" alt="{{ product.name }}">
+                {% else %}
+                    <img src="{% static 'phones/mobilesfront.png' %}" class="product-img img-fluid rounded" alt="{{ product.name }}">
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                {% with display_name=request.GET.name|default:product.name display_price=request.GET.price|default:product.price %}
+                    <h2>{{ display_name }}</h2>
+                    <p class="text-muted">{{ product.description }}</p>
+                    <h3 class="text-primary">₹{{ display_price }} {% if product.old_price %}<small class="text-muted"><del>₹{{ product.old_price }}</del></small>{% endif %}</h3>
+
+                    <div class="mt-4">
+                        <a href="{% url 'add_to_cart' product.id %}{% if request.GET.name %}?name={{ request.GET.name|urlencode }}&price={{ request.GET.price }}&img={{ request.GET.img|urlencode }}{% endif %}" class="btn btn-lg btn-outline-primary me-2">Add to Cart</a>
+                        <a href="{% url 'buy_now' product.id %}{% if request.GET.img %}?img={{ request.GET.img|urlencode }}&name={{ request.GET.name|urlencode }}&price={{ request.GET.price }}{% endif %}" class="btn btn-lg btn-success">Buy Now</a>
+                    </div>
+                {% endwith %}
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
