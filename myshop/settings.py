@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-2@li=d37*si_mohr)7n0zf5k8gqmi4e3)=^ajir-)5z(93m7-f
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [https://mycart-r9l7.onrender.com]
+ALLOWED_HOSTS = ["mycart-r9l7.onrender.com"]
 
 
 # Application definition
@@ -151,4 +151,5 @@ LOGIN_URL = 'login'
 # api key for sending otp
 
 FAST2SMS_API_KEY = "T59plXn3fUSc1GvWy0uxOLmhe8BodgKwZaiMsR6qtrJC7kHAVIkExa8tiMfKV52uehNogLlXWYCOHRZm"
+
 
